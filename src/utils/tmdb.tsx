@@ -1,7 +1,16 @@
 import {api, api_key} from '../services/api';
 
+// interface ResultsProps {
+//     length
+// }
+
+interface ResultsProps {
+    original_name:string;
+    poster_path:string;
+}
+
 export interface MoviesProps {
-    page:number;
+    results: ResultsProps[];
 }
 
 export interface MovieListProps {

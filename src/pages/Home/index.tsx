@@ -2,20 +2,24 @@ import React, {useEffect, useState} from 'react';
 
 import getMovies, {MovieListProps} from '../../utils/tmdb';
 
+import MovieList from '../../components/MovieList';
+
 import {Container, Header, MainMovie, Movies, Footer} from './styles';
 
 const Home: React.FC = ()=>{
-    const [movieList, setMovieList] = useState<MovieListProps[]>([]);
+    const [moviesList, setMoviesList] = useState<MovieListProps[]>([]);
 
     useEffect(()=>{
         const loadAll = async ()=>{
             let list = await getMovies();
-            setMovieList(list);   
+            setMoviesList(list);   
         }
 
         loadAll();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    console.log(moviesList);
 
     return (
         <Container>
@@ -28,7 +32,9 @@ const Home: React.FC = ()=>{
             </MainMovie>
 
             <Movies>
-
+                {moviesList.map((item, key)=>(
+                    <MovieList key={key} title={item.title} slug={item.slug} movies={item.filmes}/>
+                ))}
             </Movies>
 
             <Footer>
