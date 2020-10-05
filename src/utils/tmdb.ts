@@ -1,12 +1,9 @@
 import {api, api_key} from '../services/api';
 
-// interface ResultsProps {
-//     length
-// }
-
 interface ResultsProps {
     original_name:string;
     poster_path:string;
+    id: number;
 }
 
 export interface MoviesProps {
@@ -19,12 +16,21 @@ export interface MovieListProps {
     filmes: MoviesProps;
 }
 
+interface GetMovieInfoProps {
+    movieId: number;
+    type: string;
+}
+
+export interface MovieInfoProps {
+    number_of_seasons: number;
+}
+
 async function getMovies(endpoint: string){
     const response = await api.get(`${endpoint}`);
     return response.data;
 }
 
-async function MoviesList(): Promise<MovieListProps[]> {
+export async function MoviesList(): Promise<MovieListProps[]> {
     return [
         {
             slug: 'originals',
@@ -69,4 +75,20 @@ async function MoviesList(): Promise<MovieListProps[]> {
     ]
 }
 
-export default MoviesList;
+export async function getMovieInfo({movieId, type}: GetMovieInfoProps): Promise<MovieInfoProps> {
+    let info = {} as MovieInfoProps;
+
+    if(movieId) {
+        switch(type){
+            case 'movie':
+                info = await getMovies(`/movie/${movieId}?language=pt-BR&api_key=${api_key}`)
+            break;
+
+            case 'tv':
+                info = await getMovies(`/tv/${movieId}?language=pt-BR&api_key=${api_key}`) 
+            break;
+        }
+    }
+
+    return info;
+}

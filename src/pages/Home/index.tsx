@@ -1,18 +1,27 @@
 import React, {useEffect, useState} from 'react';
 
-import getMovies, {MovieListProps} from '../../utils/tmdb';
+import {MoviesList, MovieListProps, getMovieInfo, MovieInfoProps} from '../../utils/tmdb';
 
 import MovieList from '../../components/MovieList';
+import FeaturedMovie from '../../components/FeatureMovie';
 
 import {Container, Header, MainMovie, Movies, Footer} from './styles';
 
 const Home: React.FC = ()=>{
     const [moviesList, setMoviesList] = useState<MovieListProps[]>([]);
+    const [featuredData, setFeaturedData] = useState<MovieInfoProps>({} as MovieInfoProps);
 
     useEffect(()=>{
         const loadAll = async ()=>{
-            let list = await getMovies();
+            let list = await MoviesList();
             setMoviesList(list);   
+
+            let originals = list.filter(i => i.slug === 'originals');
+            let random = Math.floor(Math.random()* (originals[0].filmes.results.length - 1));
+            let chosenMovie = originals[0].filmes.results[random];
+            let chosenInfo = await getMovieInfo({movieId: chosenMovie.id, type:'tv'});
+
+            setFeaturedData(chosenInfo);
         }
 
         loadAll();
@@ -27,9 +36,9 @@ const Home: React.FC = ()=>{
 
             </Header>
 
-            <MainMovie>
-
-            </MainMovie>
+            {featuredData && 
+                <FeaturedMovie item={featuredData} />
+            }
 
             <Movies>
                 {moviesList.map((item, key)=>(

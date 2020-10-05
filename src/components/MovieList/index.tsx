@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {MovieRowListArea} from './styles';
+import {MovieRow, MovieRowListArea, MovieRowList, MovieRowItem} from './styles';
 
 import {MoviesProps} from '../../utils/tmdb';
 
@@ -13,15 +13,19 @@ interface MovieListProps {
 
 const MovieList: React.FC<MovieListProps> = ({title, movies})=>{
     return(
-        <div>
+        <MovieRow>
             <h2>{title}</h2>
 
             <MovieRowListArea>
-                {movies.results.length > 0 && movies.results.map((item, key)=>(
-                    <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.original_name}/>
-                ))}
+                <MovieRowList> 
+                    {movies.results.length > 0 && movies.results.map((item, key)=>(
+                        <MovieRowItem key={key}>
+                            <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.original_name}/>
+                        </MovieRowItem>
+                    ))}
+                </MovieRowList>
             </MovieRowListArea>
-        </div>
+        </MovieRow>
     );
 }
 
