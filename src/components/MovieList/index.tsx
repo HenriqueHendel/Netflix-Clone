@@ -18,7 +18,7 @@ const MovieList: React.FC<MovieListProps> = ({title, movies})=>{
 
             <MovieRowListArea>
                 {movies.results.length > 0 && movies.results.map((item, key)=>(
-                    <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} />
+                    <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.original_name}/>
                 ))}
             </MovieRowListArea>
         </div>
