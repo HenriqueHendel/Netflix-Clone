@@ -47,4 +47,12 @@ export const Movies = styled.section`
     margin-top: -110px;
 `;
 
-export const Footer = styled.div``;
+export const Footer = styled.footer`
+    margin: 50px 0;
+    text-align:center;
+
+    a {
+        text-decoration:none;
+        color: #E50914;
+    }
+`;

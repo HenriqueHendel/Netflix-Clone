@@ -70,7 +70,9 @@ const Home: React.FC = ()=>{
             </Movies>
 
             <Footer>
-                
+                Clone da interface feita por <a href="https://www.linkedin.com/in/henriquehendellopes" rel="noopener noreferrer" target="_blank"><strong>Henrique Hendel Santos Lopes</strong></a> <br/>
+                Direitos de imagem para a <a href="https://www.netflix.com/" rel="noopener noreferrer" target="_blank"><strong>Netflix</strong></a> <br/>
+                Dados dos filmes pegos do site <a href="https://www.themoviedb.org/" rel="noopener noreferrer" target="_blank"><strong>Themoviedb.org</strong></a> <br/>
             </Footer>
 
         </Container>
