@@ -32,6 +32,11 @@ const FeaturedMovie: React.FC<FeaturedMovieProps> = ({item})=>{
         
     }, [item.first_air_date, item.genres]);
 
+    let description = item.overview;
+    if(description && description.length>200){
+        description = `${description.substr(0, 200)}...`;
+    }
+
     return (
         
         <Featured Backdrop_url={item.backdrop_path}>
@@ -44,7 +49,7 @@ const FeaturedMovie: React.FC<FeaturedMovieProps> = ({item})=>{
                         <span>{item.number_of_seasons} temporada{item.number_of_seasons !== 1 ? 's' : ''}</span>
                     </FeaturedInfo>
                     <FeaturedDescription>
-                        {item.overview}
+                        {description}
                     </FeaturedDescription>
                     <FeaturedButtons>
                         <a href={`/watch/${item.id}`}>Assistir</a>
