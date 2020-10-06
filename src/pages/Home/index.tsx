@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 
+import ReactLoading from 'react-loading';
+
 import {MoviesList, MovieListProps, getMovieInfo, MovieInfoProps} from '../../utils/tmdb';
 
 import MovieList from '../../components/MovieList';
 import FeaturedMovie from '../../components/FeatureMovie';
 
-import {Container, Header, MainMovie, Movies, Footer} from './styles';
+import {Container, Header, Movies, Footer, Loading} from './styles';
 
 const Home: React.FC = ()=>{
     const [moviesList, setMoviesList] = useState<MovieListProps[]>([]);
@@ -74,6 +76,12 @@ const Home: React.FC = ()=>{
                 Direitos de imagem para a <a href="https://www.netflix.com/" rel="noopener noreferrer" target="_blank"><strong>Netflix</strong></a> <br/>
                 Dados dos filmes pegos do site <a href="https://www.themoviedb.org/" rel="noopener noreferrer" target="_blank"><strong>Themoviedb.org</strong></a> <br/>
             </Footer>
+
+            {moviesList.length <= 0 && 
+                <Loading>
+                    <ReactLoading type="spin" color="#E50914" />
+                </Loading>               
+            }
 
         </Container>
     );

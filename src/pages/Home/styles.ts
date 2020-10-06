@@ -41,8 +41,6 @@ export const Header = styled.div<HeaderProps>`
     }
 `;
 
-export const MainMovie = styled.div``;
-
 export const Movies = styled.section`
     margin-top: -100px;
 `;
@@ -55,4 +53,16 @@ export const Footer = styled.footer`
         text-decoration:none;
         color: #E50914;
     }
+`;
+
+export const Loading = styled.div`
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    z-index: 99;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 `;
