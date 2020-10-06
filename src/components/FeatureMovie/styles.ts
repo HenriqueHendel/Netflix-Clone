@@ -37,6 +37,7 @@ export const FeaturedHorizontal = styled.div`
 export const Title = styled.h1`
     font-size: 60px;
     font-weight: bold;
+    margin-bottom:0;
 `;
 
 export const FeaturedInfo = styled.div`

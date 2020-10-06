@@ -44,7 +44,7 @@ export const Header = styled.div<HeaderProps>`
 export const MainMovie = styled.div``;
 
 export const Movies = styled.section`
-    margin-top: -110px;
+    margin-top: -100px;
 `;
 
 export const Footer = styled.footer`
