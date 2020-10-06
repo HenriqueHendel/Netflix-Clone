@@ -29,6 +29,10 @@ export const MovieRow = styled.div`
         opacity: 0;
         
         transition: opacity ease 0.5s;
+
+        @media(max-width:760px) {
+            opacity: 1;
+        }
     }
 
     &:hover {

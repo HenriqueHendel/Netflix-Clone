@@ -12,6 +12,10 @@ export const Featured = styled.section<FeaturedProps>`
     background-position: center; 
     background-size: cover;
 
+    @media(max-width:760px) {
+        height: 90vh;
+    }
+
 `;
 
 export const FeaturedVertical = styled.div`
@@ -38,6 +42,10 @@ export const Title = styled.h1`
     font-size: 60px;
     font-weight: bold;
     margin-bottom:0;
+
+    @media(max-width:760px) {
+        font-size: 40px;
+    }
 `;
 
 export const FeaturedInfo = styled.div`
@@ -52,6 +60,10 @@ export const FeaturedInfo = styled.div`
     span + span {
         margin-left: 15px;
     }
+
+    @media(max-width:760px) {
+        font-size: 16px;
+    }
 `;
 
 export const FeaturedDescription = styled.div`
@@ -59,6 +71,12 @@ export const FeaturedDescription = styled.div`
     font-size:20px;
     color:#999;
     max-width: 40%;
+
+    @media(max-width:760px) {
+        font-size: 14px;
+        max-width: 100%;
+        margin-right:30px;
+    }
 `;
 
 export const FeaturedButtons = styled.div`
@@ -71,6 +89,10 @@ export const FeaturedButtons = styled.div`
         border-radius: 5px;
         text-decoration: none;
         display: inline-block;
+
+        @media(max-width:760px) {
+            font-size: 16px;
+        }   
     }
 
     a:first-child {
@@ -99,4 +121,8 @@ export const FeaturedGenres = styled.div`
     margin-top: 15px;
     font-size: 18px;
     color: #999;
+
+    @media(max-width:760px) {
+        font-size: 14px;
+    }
 `;

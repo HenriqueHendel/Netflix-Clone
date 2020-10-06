@@ -43,6 +43,10 @@ export const Header = styled.div<HeaderProps>`
 
 export const Movies = styled.section`
     margin-top: -100px;
+
+    @media(max-width:760px) {
+        margin-top: -80px;
+    }
 `;
 
 export const Footer = styled.footer`
