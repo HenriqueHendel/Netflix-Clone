@@ -10,6 +10,7 @@ import {Container, Header, MainMovie, Movies, Footer} from './styles';
 const Home: React.FC = ()=>{
     const [moviesList, setMoviesList] = useState<MovieListProps[]>([]);
     const [featuredData, setFeaturedData] = useState<MovieInfoProps>({} as MovieInfoProps);
+    const [blackedHeader, setBlackedHeader] = useState(false);
 
     useEffect(()=>{
         const loadAll = async ()=>{
@@ -28,12 +29,34 @@ const Home: React.FC = ()=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(() => {
+        const scrollListener = () => {
+            if(window.scrollY > 10) {
+                setBlackedHeader(true);
+            }else {
+                setBlackedHeader(false);
+            }
+        }
+
+        window.addEventListener('scroll', scrollListener);
+
+        return ()=>{
+            window.removeEventListener('scroll', scrollListener);
+        }
+    }, [])
+
+
     console.log(moviesList);
 
     return (
         <Container>
-            <Header>
-
+            <Header blacked={blackedHeader}>
+                <a href="/">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Netflix.png" alt="Netflix_Logo"/>
+                </a>
+                <a href="/">
+                    <img src="https://pbs.twimg.com/profile_images/1240119990411550720/hBEe3tdn_400x400.png" alt="User_Image"/>
+                </a>
             </Header>
 
             {featuredData && 
